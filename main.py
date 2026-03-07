@@ -26,7 +26,7 @@ async def perform_query(request: QueryRequest):
     """
     JUSTIFICATION: The core retrieval endpoint. It uses Sentence-BERT to encode the query, 
     then uses the GMM to predict the cluster. By isolating the cache search to specific 
-    clusters, we reduce search time complexity from $O(N)$ to $O(N/K)$.
+    clusters, we reduce search time complexity from O(N) to O(N/K).
     """
     query_vec = encoder.encode(request.query).astype('float32')
     
