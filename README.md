@@ -42,7 +42,7 @@ pip install -r requirements.txt
 </code></pre>
 
 <h3>2. Run API Service</h3>
-<pre><code class="language-bash">uvicorn main:app --host 0.0.0.0 --port 8000</code></pre>
+<pre><code class="language-bash">uvicorn main:app --reload</code></pre>
 
 <p>Access the interactive Swagger UI here: <a href="http://localhost:8000/docs">http://localhost:8000/docs</a></p>
 
