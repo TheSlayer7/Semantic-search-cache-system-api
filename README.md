@@ -18,7 +18,7 @@
 
 <p>
   <b>Loom Demo:</b><br>
-  <a href="REPLACE_WITH_YOUR_LOOM_LINK">
+  <a href="https://www.loom.com/share/eb028f54d2db4bc291ee1815d66d979e">
     <img src="https://img.shields.io/badge/Watch_Demo-Loom-brightgreen?style=for-the-badge&logo=loom" alt="Watch Demo" />
   </a>
 </p>
