@@ -46,6 +46,12 @@ async def perform_query(request: QueryRequest):
             hit_cluster = int(cluster_id)
             break 
 
+    if len(top_clusters) == 2:
+        if cache_hit_data and hit_cluster == int(top_clusters[1]):
+            semantic_cache.misses -= 1
+        elif not cache_hit_data:
+            semantic_cache.misses -= 1
+
     if cache_hit_data:
         # Similiarity score is printed in the terminal after extracting
         sim_score = cache_hit_data["similarity_score"]

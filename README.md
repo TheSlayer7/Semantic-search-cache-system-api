@@ -64,8 +64,6 @@ python data.py</code></pre>
 
 <h2>🧠 System Architecture</h2>
 
-
-
 <pre>
 User Query
    │
@@ -90,6 +88,20 @@ Cache Update & API Response
 
 <hr>
 
+<h2>🌐 API Endpoints & Cache Management</h2>
+
+<p>
+  <b>Note on the Loom Demo:</b> To keep the video concise and focused on the core ML architecture (GMM clustering and FAISS fallback), the cache management endpoints below were not explicitly shown. However, you can easily test them yourself by opening the Swagger UI (<code>/docs</code>), clicking <b>Try it out</b>, and hitting <b>Execute</b>!
+</p>
+
+<ul>
+  <li><b><code>POST /query</code></b>: The core semantic search endpoint. Submits a query, checks the top-2 GMM clusters in the cache, and falls back to FAISS if necessary.</li>
+  <li><b><code>GET /cache/stats</code></b>: Returns real-time telemetry, including total cache entries, hit count, miss count, and the overall hit rate.</li>
+  <li><b><code>DELETE /cache</code></b>: Flushes the in-memory cache dictionary and resets all telemetry counters back to zero. Perfect for testing cold-start vs. warm-start performance.</li>
+</ul>
+
+<hr>
+
 <h2>⚖️ Design Justifications</h2>
 
 <ul>
@@ -97,13 +109,6 @@ Cache Update & API Response
   <li><b>Semantic Cache:</b> Implemented a custom partitioned cache that checks the <b>Top-2</b> clusters. This optimizes lookup speed to $O(N/K)$ while preventing cache misses on ambiguous queries.</li>
   <li><b>Similarity Metric:</b> A threshold of <b>0.9</b> (Euclidean $L_2$ distance) was selected to maximize cache precision without hallucinating false matches.</li>
 </ul>
-
-<hr>
-
-<h2>🔍 API Telemetry (Terminal Output)</h2>
-<p>The system provides real-time vector math logs for transparency during use:</p>
-<pre><code>✅ CACHE HIT! Query: 'Repairing a punctured tire' | Cluster: 11 | Distance: 0.88 | Similarity: 0.53
-❌ CACHE MISS! Searching FAISS for: 'lol' | Cluster: 3 | Distance: 1.17 | Similarity: 0.46</code></pre>
 
 <hr>
 
