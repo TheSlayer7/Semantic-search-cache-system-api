@@ -18,6 +18,14 @@ DIRECT DEPENDENCIES
 - joblib 1.5.3: BSD-3-Clause
 - pydantic 2.12.5: MIT
 
+## GPL Clarification
+
+Some dependencies (e.g., NumPy) may include components licensed under GPL with the GCC Runtime Library Exception.
+
+These components are used as part of standard library distributions and do NOT impose GPL requirements on this project.
+
+This project does not include or modify any GPL-licensed source code and is not subject to GPL copyleft obligations.
+
 
 ================================================================================
 fastapi 0.135.1
